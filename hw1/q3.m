@@ -55,3 +55,9 @@ a=sum(alpha);
 	%方便化简
 alpha=alpha*27;
 b=b*27;
+
+%then, we ge the alpha with 2,3,4,5,6 not zeros,
+%then, we can use the support vector来计算对应的 kernel系数。并且附加上最后的，我想完成一个
+%带有x参数的程序化简公式，但是，在编程里面，并不能进行对应这样的实现，这个非常重要
+%注意体会对应的运用化简分析，很重要。体会matlab数值计算，JAVA也类似，必须在处理的时候，代入对应的数值，进行对应的展开计算。最后还是
+%要赋值对应得数值，才可以更好地进行进一步的计算，但是，我们可以计算对应的alphaN和yN对应的乘积，来优化求解分析。
