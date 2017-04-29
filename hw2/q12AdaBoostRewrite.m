@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 %%%%%%%%%%%%%%%finish by hebing
 %%%%%%%%%%%%the seconde changes 
 
-=======
->>>>>>> parent of 61f742f... test the change
 clear all;
 disp('Load data and process data');
 train=load('hw2_adaboost_train.dat'); % size n*3 dimension with feature1, feature2, label
