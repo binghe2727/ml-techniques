@@ -1,6 +1,4 @@
 %%%%%%%%%%%%%%%finish by hebing
-%%%%%%%%%%%%the seconde changes 
-
 clear all;
 disp('Load data and process data');
 train=load('hw2_adaboost_train.dat'); % size n*3 dimension with feature1, feature2, label
