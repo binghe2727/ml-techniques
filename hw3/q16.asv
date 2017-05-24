@@ -1,0 +1,9 @@
+%%%%%%%%%%%%q16 gett
+d
+for i=1:100
+    for j=1:300
+        sampleInd=randi(100,100,1);
+        data=data(sampleInd,:);
+        
+    end
+end

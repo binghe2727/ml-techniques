@@ -1,0 +1,32 @@
+%%%%%%%%%%%q17 function
+clear all;
+data=load('hw3_train.dat'); 
+errorAll=0;
+for i=1:100    
+    streeVector=[];
+    for j=1:300        
+        sampleInd=randi(100,100,1);
+        trainData=data(sampleInd,:);
+        r=[];% for building of the decisionTree
+        %r(5,1)=0;
+        order=1;
+        pareNodeValue=0;
+        %r,1=0/1,r2=i,r3=s;r4=theta,r5=order
+        [gt,iMin,sMin,thetaMin,r ] = DTreePredict( pareNodeValue,trainData,r,order );
+        %%%%%%%%%%%%%% do the predict for all data
+        testData=load('hw3_train.dat'); %only for the q15;cancel it for q14
+        for ii=1:size(testData,1)
+            yFinalPredict=DTPredictByRheap(testData(ii,:)',r,1);
+            streeVectorTuple(ii,1)=yFinalPredict;
+        end
+        %%%%%%%%%%%%add to final
+        streeVector=[streeVector,streeVectorTuple];
+    end
+    [m,n]=size(streeVector);%m is the training data examples size and n is 
+    %the number of the tree, that is 300
+    posi1Matrix=(streeVector==ones(m,n));
+    nega1Matrix=(streeVector==(ones(m,n)*(-1)));
+    finalPredictLabel=((sum(posi1Matrix')>sum(nega1Matrix'))*(+1)+ ...
+        (sum(posi1Matrix')<sum(nega1Matrix'))*(-1))';
+    errorNow=sum(finalPredictLabel~=testData(:,3))/size(testData,1);
+end
