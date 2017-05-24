@@ -3,7 +3,7 @@ clear all;
 disp('Load data and process data');
 train=load('hw2_adaboost_train.dat'); % size n*3 dimension with feature1, feature2, label
 test=load('hw2_adaboost_test.dat'); % size n*3 dimension with feature1, feature2, label
-[feature1Matrix,feature1Index]=sortrows(train,1);
+[feature1Matrix,feature1Index]=sortrows(train,1); %sort by the rows to get the new matrix
 [feature2Matrix,feature2Index]=sortrows(train,2);
 N=size(feature1Matrix,1); % the size of input sample number
 M=2;% feature number
@@ -17,13 +17,14 @@ end
 
 for m=1:N
 	if (m>1)
-		theta2Vector(m,1)=1/2*(feature2Matrix(m,1)+feature2Matrix(m-1,1));
+		%theta2Vector(m,1)=1/2*(feature2Matrix(m,1)+feature2Matrix(m-1,1));
+		theta2Vector(m,1)=1/2*(feature2Matrix(m,2)+feature2Matrix(m-1,2)); %fix the error for the dimension index of 2 not one
 	else %m==1
 		theta2Vector(m,1)=-Inf;
 	end
 end
 %%%s parameter setting
-s(1,1)=1;
+s(1,1)=1;% direction value setting
 s(2,1)=-1;
 disp('start bootstrap');
 uNCur=(1/N)*ones(N,1);
